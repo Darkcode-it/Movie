@@ -1,6 +1,6 @@
 {
-  "homepage": "https://darkcode-it.github.io/movie/",
-  "name": "movie",
+  "homepage": "https://darkcode-it.github.io/Movie/",
+  "name": "Movie",
   "private": true,
   "version": "0.0.0",
   "type": "module",
