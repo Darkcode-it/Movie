@@ -1,17 +1,15 @@
-
-
-function Nav() {
+export default function Nav() {
     return (
-        <nav className="flex mt-10 items-center text-slate-300">
+        <nav className="flex  items-center text-slate-300 p-10">
             <div className="flex items-center">
                 <h1 className="text-2xl mr-12">Movis <span className="text-rose-600 font-semibold"> Film</span>
                 <p className="text-slate-600 text-xs text-center font-semibold">Film Review</p>
                 </h1>
-                <ul className="flex gap-4 uppercase">
-                    <li className=""><a href="#">Movis</a></li>
-                    <li className=""><a href="#">TV shows</a></li>
-                    <li className=""><a href="#"></a>Pip</li>
-                    <li className=""><a href="#"></a>More</li>
+                <ul className="flex gap-4 uppercase ">
+                    <li className="hover:text-white "><a href="#" className="hover:border-1 rounded-md p-1 ">Movis</a></li>
+                    <li className="hover:text-white"><a href="#" className="hover:border-1 rounded-md p-1 ">TV shows</a></li>
+                    <li className="hover:text-white"><a href="#" className="hover:border-1 rounded-md p-1 ">Pip</a></li>
+                    <li className="hover:text-white"><a href="#" className="hover:border-1 rounded-md p-1 ">More</a></li>
                 </ul>
             </div>
 <div className="ml-auto ">
@@ -20,9 +18,7 @@ function Nav() {
         <li className="bg-rose-700 hover:bg-rose-500 cursor-pointer px-6 py-3 rounded-3xl text-white "><a href="#" ></a>Sign up</li>
     </ul>
 </div>
-
         </nav>
     );
 }
 
-export default Nav;

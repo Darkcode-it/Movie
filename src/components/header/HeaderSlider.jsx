@@ -1,16 +1,16 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function HeaderSlider() {
     return (
-        <div>
-            <Swiper
-                spaceBetween={50} slidesPerView={5}>
+        <div className="mt-10">
+            {/* <Swiper spaceBetween={50} slidesPerView={4} autoplay={{ delay: 200 }} loop>
+                {<SwiperSlide>
+                </SwiperSlide>}
+            </Swiper> */}
 
 
-            </Swiper>
 
-
+     
         </div>
     );
 }
-
