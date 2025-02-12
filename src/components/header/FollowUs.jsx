@@ -15,11 +15,11 @@ function FollowUs() {
 
                         <li><a href="#"></a><FaInstagram size="20"
                          className="hover:text-rose-500" /></li>
-                        <li><a href="#"></a><CiFacebook size="20"
+                        <li><a href="https://www.facebook.com/DarkCodeit"></a><CiFacebook size="20"
                             className="hover:text-rose-500" /></li>
-                        <li><a href="#"></a><FaGithub size="20" 
+                        <li><a href="https://github.com/Darkcode-it"></a><FaGithub size="20" 
                         className="hover:text-rose-500" /></li>
-                        <li><a href="#"></a><FaTelegram size="20"
+                        <li><a href="https://t.me/Darkcodeit"></a><FaTelegram size="20"
                             className="hover:text-rose-500" /></li>
                     </ul>
                 </span>
