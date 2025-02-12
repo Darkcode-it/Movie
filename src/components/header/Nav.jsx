@@ -4,17 +4,17 @@ import { TiThMenuOutline } from "react-icons/ti";
 
 export default function Nav() {
     const [isOpenMenu, setisOpenMenu] = useState(false);
-    const [activeItem, setActiveItem] = useState(null); // State برای ذخیره آیتم فعال
+    const [activeItem, setActiveItem] = useState(null); 
 
     const handleItemClick = (item) => {
-        setActiveItem(item); // تنظیم آیتم فعال
-        setisOpenMenu(false); // بستن منو پس از کلیک (اختیاری)
+        setActiveItem(item); 
+        setisOpenMenu(false); 
     };
 
     return (
         <>
             <nav className=" container mx-auto flex items-center
-             text-slate-300 p-4 bg-slate-900">
+             text-slate-300 p-3 bg-slate-900">
                 <div className="flex items-center">
                     <h1 className="text-2xl mr-12">
                         Movis <span className="text-rose-600 font-semibold">Film</span>
@@ -52,7 +52,7 @@ export default function Nav() {
             <div
                 className={`bg-slate-900 text-center overflow-hidden transition-all duration-500 ${isOpenMenu ? "h-full py-4 border-t-2 border-slate-800" : "h-0 py-0 border-none"
                     }`}
-                    style={{height: isOpenMenu ? 330: 0}}
+                style={{ height: isOpenMenu ? 300 : 0 }}
             >
                 <ul className="flex flex-col gap-1 text-xl">
                     <li>
@@ -96,12 +96,12 @@ export default function Nav() {
                         </a>
                     </li>
                 </ul>
-             
-                  <ul className=" mt-5 gap-4 flex justify-center items-center border-t-1 border-slate-700 pt-4">
+
+                <ul className=" mt-5 gap-4 flex justify-center items-center border-t-1 border-slate-700 pt-4">
                     <li className="text-xl"><a href=""></a>Login</li>
-                    <li  className="bg-rose-600 rounded-2xl py-2 px-4"><a href=""></a>Sing Up</li>
-                  </ul>
-           
+                    <li className="bg-rose-600 rounded-2xl py-2 px-4"><a href=""></a>Sing Up</li>
+                </ul>
+
             </div>
         </>
     );

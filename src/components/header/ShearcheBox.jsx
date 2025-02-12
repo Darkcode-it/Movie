@@ -5,7 +5,7 @@ export default function ShearcheBox() {
         <section className=" container mx-auto
          mt-10 text-slate-400 pl-10 pr-10" >
             <div className="relative">
-                <input type="text" placeholder="What are you looking for?" className="w-full bg-slate-700 text-2xl p-3
+                <input type="text" placeholder="What are you looking for?" className="w-full bg-slate-700 md:text-2xl p-3
     border-slate-500 border-0.5 rounded-md"/>
                 <CiSearch className="absolute right-0 top-1/3 mr-5 w-10 h-10 -translate-y-3" />
             </div>
