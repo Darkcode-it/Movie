@@ -13,7 +13,8 @@ export default function Nav() {
 
     return (
         <>
-            <nav className="flex items-center text-slate-300 p-4 bg-slate-900">
+            <nav className=" container mx-auto flex items-center
+             text-slate-300 p-4 bg-slate-900">
                 <div className="flex items-center">
                     <h1 className="text-2xl mr-12">
                         Movis <span className="text-rose-600 font-semibold">Film</span>

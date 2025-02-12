@@ -7,7 +7,7 @@ function FollowUs() {
         <section>
             <div>
                 <span>
-                    <ul className="  flex
+                    <ul className="  flex container mx-auto
                      mt-5 gap-4 text-center items-center
                       justify-end text-slate-200 pr-10">
 

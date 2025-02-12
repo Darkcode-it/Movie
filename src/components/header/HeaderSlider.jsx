@@ -11,10 +11,10 @@ export default function HeaderSlider() {
         '/film4.jpg'
     ];
     return (
-        <div className=" md:mt-10">
+        <div className=" md:mt-10 container mx-auto">
             <Swiper
 
-            
+
                 spaceBetween={50}
                 slidesPerView={4}
                 autoplay={{ delay: 100 }}

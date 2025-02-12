@@ -8,8 +8,7 @@ import bg from "/public/bg.jpg";
 
 export default function App() {
   return (
-    <main 
-      className="container mx-auto" 
+    <main  
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: 'cover',
