@@ -11,8 +11,10 @@ export default function HeaderSlider() {
         '/film4.jpg'
     ];
     return (
-        <div className="mt-10">
+        <div className=" md:mt-10">
             <Swiper
+
+            
                 spaceBetween={50}
                 slidesPerView={4}
                 autoplay={{ delay: 100 }}
