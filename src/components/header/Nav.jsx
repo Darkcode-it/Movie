@@ -1,108 +1,126 @@
-
 import { useState } from "react";
 import { TiThMenuOutline } from "react-icons/ti";
 
 export default function Nav() {
-    const [isOpenMenu, setisOpenMenu] = useState(false);
-    const [activeItem, setActiveItem] = useState(null); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Movies");
 
-    const handleItemClick = (item) => {
-        setActiveItem(item); 
-        setisOpenMenu(false); 
-    };
+  const handleItemClick = (item) => {
+    setActiveItem(item);
+    setIsMenuOpen(false);
+  };
 
-    return (
-        <>
-            <nav className=" container mx-auto flex items-center
-             text-slate-300 p-3 bg-slate-900">
-                <div className="flex items-center">
-                    <h1 className="text-2xl mr-12">
-                        Movis <span className="text-rose-600 font-semibold">Film</span>
-                        <p className="text-slate-600 text-xs text-center font-semibold">Film Review</p>
-                    </h1>
-                    <ul className="hidden md:flex gap-4 uppercase text-sm lg:text-base">
-                        <li className="hover:text-white">
-                            <a href="#" className="hover:border-1 rounded-md p-1">Movies</a>
-                        </li>
-                        <li className="hover:text-white">
-                            <a href="#" className="hover:border-1 rounded-md p-1">TV shows</a>
-                        </li>
-                        <li className="hover:text-white">
-                            <a href="#" className="hover:border-1 rounded-md p-1">Pip</a>
-                        </li>
-                        <li className="hover:text-white">
-                            <a href="#" className="hover:border-1 rounded-md p-1">More</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="ml-auto">
-                    <ul className="hidden md:flex gap-4 items-center uppercase text-sm lg:text-base">
-                        <li className="cursor-pointer hover:text-white">
-                            <a href="#">Login</a>
-                        </li>
-                        <li className="bg-rose-700 hover:bg-rose-500 cursor-pointer px-6 py-3 rounded-3xl text-white">
-                            <a href="#">Sign up</a>
-                        </li>
-                    </ul>
-                    <button className="md:hidden" onClick={() => setisOpenMenu(!isOpenMenu)}>
-                        <TiThMenuOutline size="40" color="rgba(154, 159, 170, 0.5)" />
-                    </button>
-                </div>
-            </nav>
-            <div
-                className={`bg-slate-900 text-center overflow-hidden transition-all duration-500 ${isOpenMenu ? "h-full py-4 border-t-2 border-slate-800" : "h-0 py-0 border-none"
-                    }`}
-                style={{ height: isOpenMenu ? 300 : 0 }}
-            >
-                <ul className="flex flex-col gap-1 text-xl">
-                    <li>
-                        <a
-                            href="#"
-                            className={`block py-2 hover:bg-slate-800 hover:text-white transition-all duration-300 ${activeItem === "Movies" ? "text-rose-600" : "text-slate-300"
-                                }`}
-                            onClick={() => handleItemClick("Movies")}
-                        >
-                            Movies
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#"
-                            className={`block py-2 hover:bg-slate-800 hover:text-white transition-all duration-300 ${activeItem === "TV shows" ? "text-rose-600" : "text-slate-300"
-                                }`}
-                            onClick={() => handleItemClick("TV shows")}
-                        >
-                            TV shows
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#"
-                            className={`block py-2 hover:bg-slate-800 hover:text-white transition-all duration-300 ${activeItem === "Pip" ? "text-rose-600" : "text-slate-300"
-                                }`}
-                            onClick={() => handleItemClick("Pip")}
-                        >
-                            Pip
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#"
-                            className={`block py-2 hover:bg-slate-800 hover:text-white transition-all duration-300 ${activeItem === "More" ? "text-rose-600" : "text-slate-300"
-                                }`}
-                            onClick={() => handleItemClick("More")}
-                        >
-                            More
-                        </a>
-                    </li>
-                </ul>
+  const navItems = [
+    { label: "Movies", href: "#" },
+    { label: "TV Shows", href: "#" },
+    { label: "Pip", href: "#" },
+    { label: "More", href: "#" },
+  ];
 
-                <ul className=" mt-5 gap-4 flex justify-center items-center border-t-1 border-slate-700 pt-4">
-                    <li className="text-xl"><a href=""></a>Login</li>
-                    <li className="bg-rose-600 rounded-2xl py-2 px-4"><a href=""></a>Sing Up</li>
-                </ul>
-
+  return (
+    <>
+      <nav className="sticky top-0 z-50 bg-slate-900 shadow-lg">
+        <div className="container mx-auto flex items-center justify-between px-4 py-3">
+          {/* Logo Section */}
+          <div className="flex items-center space-x-8">
+            <div className="flex flex-col">
+              <h1 className="text-2xl font-medium text-slate-100">
+                Movis<span className="text-rose-500">Film</span>
+              </h1>
+              <p className="text-xs font-semibold text-slate-400">Film Review</p>
             </div>
-        </>
-    );
+            
+            {/* Desktop Navigation */}
+            <ul className="hidden space-x-4 md:flex">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className={`px-3 py-2 text-sm transition-colors duration-200 hover:text-white lg:text-base ${
+                      activeItem === item.label ? "text-rose-500" : "text-slate-300"
+                    }`}
+                    onClick={() => handleItemClick(item.label)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Auth Section */}
+          <div className="hidden items-center space-x-4 md:flex">
+            <a
+              href="#"
+              className="text-slate-300 transition-colors duration-200 hover:text-white"
+            >
+              Login
+            </a>
+            <a
+              href="#"
+              className="rounded-3xl bg-rose-600 px-6 py-2 text-white transition-colors duration-200 hover:bg-rose-500"
+            >
+              Sign Up
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+          >
+            <TiThMenuOutline
+              size={32}
+              className="text-slate-400/50 transition-colors duration-200 hover:text-slate-300"
+            />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <div
+        className={`bg-slate-800 transition-all duration-300 ease-in-out md:hidden ${
+          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+        aria-hidden={!isMenuOpen}
+      >
+        <div className="container mx-auto space-y-4 px-4 py-6">
+          <ul className="space-y-2 border-b border-slate-700 pb-4">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className={`block px-2 py-3 text-base transition-colors duration-200 ${
+                    activeItem === item.label
+                      ? "text-rose-500"
+                      : "text-slate-300 hover:bg-slate-900/50"
+                  }`}
+                  onClick={() => handleItemClick(item.label)}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          <div className="flex items-center justify-center space-x-4 pt-2">
+            <a
+              href="#"
+              className="text-slate-300 transition-colors duration-200 hover:text-white"
+            >
+              Login
+            </a>
+            <a
+              href="#"
+              className="rounded-2xl bg-rose-600 px-6 py-2 text-white transition-colors duration-200 hover:bg-rose-500"
+            >
+              Sign Up
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
