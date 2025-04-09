@@ -12,3 +12,11 @@ body {
     font-variation-settings: "wdth" 100;
 }
 
+@media (pointer: coarse) {
+    .mobile\:opacity-100 {
+      opacity: 1 !important;
+    }
+    .mobile\:pointer-events-none {
+      pointer-events: none !important;
+    }
+  }

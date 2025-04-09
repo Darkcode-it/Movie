@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Lia500Px } from "react-icons/lia";
 import { TiThMenuOutline } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,18 +52,18 @@ export default function Nav() {
 
           {/* Auth Section */}
           <div className="hidden items-center space-x-4 md:flex">
-            <a
-              href="#"
+            <Link
+              to="/Movie/login"
               className="text-slate-300 transition-colors duration-200 hover:text-white"
             >
               Login
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/Movie/register"
               className="rounded-3xl bg-rose-600 px-6 py-2 text-white transition-colors duration-200 hover:bg-rose-500"
             >
               Sign Up
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,7 +82,7 @@ export default function Nav() {
       </nav>
 
       {/* Mobile Navigation */}
-      <div
+     <div
         className={`bg-slate-800 transition-all duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
@@ -106,21 +108,22 @@ export default function Nav() {
           </ul>
           
           <div className="flex items-center justify-center space-x-4 pt-2">
-            <a
-              href="#"
+            <Link
+              to="/Movie/login"
               className="text-slate-300 transition-colors duration-200 hover:text-white"
             >
               Login
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/Movie/register"
               className="rounded-2xl bg-rose-600 px-6 py-2 text-white transition-colors duration-200 hover:bg-rose-500"
             >
               Sign Up
-            </a>
+            </Link>
           </div>
         </div>
       </div>
+    
     </>
   );
 }
