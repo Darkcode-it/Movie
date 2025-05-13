@@ -9,7 +9,8 @@
             "id": 2,
             "img": "../public/img(1).jpeg",
             "title": "panda"
-        },{
+        },
+        {
             "id": 3,
             "img": "img/img(2).jpg",
             "title": "panda"
@@ -24,6 +25,5 @@
             "img": "img/img(4).jpg",
             "title": "panda"
         }
-
     ]
 }

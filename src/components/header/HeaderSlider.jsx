@@ -94,7 +94,7 @@ export default function HeaderSlider() {
   const movies = [
     {
       id: 1,
-      src: './public/img/film.jpg',
+      src: 'img/film.jpg',
       alt: 'پوستر فیلم اکشن',
       title: 'ماموریت غیرممکن',
       description: 'یک فیلم اکشن پر از تعقیب و گریز و سکانس‌های نفس‌گیر با بازی تام کروز',
@@ -104,7 +104,7 @@ export default function HeaderSlider() {
     },
     {
       id: 2,
-      src: './public/img/film1.jpg',
+      src: 'img/film1.jpg',
       alt: 'صحنه فیلم کمدی',
       title: 'مردان بد',
       description: 'کمدی سیاه با بازی درخشان ویل اسمیت و مارتین لارنس',
@@ -114,7 +114,7 @@ export default function HeaderSlider() {
     },
     {
       id: 3,
-      src: './public/img/film5.jpg',
+      src: 'img/film5.jpg',
       alt: 'فیلم درام',
       title: 'راه رفتن در باران',
       description: 'داستان عاشقانه‌ای که در پس‌زمینه‌ای تاریخی روایت می‌شود',
@@ -124,7 +124,7 @@ export default function HeaderSlider() {
     },
     {
       id: 4,
-      src: './public/img/film3.jpg',
+      src: 'img/film3.jpg',
       alt: 'پیش نمایش فیلم علمی تخیلی',
       title: 'کهکشان بی‌پایان',
       description: 'سفر بین ستاره‌ای گروهی از فضانوردان برای نجات بشریت',
@@ -134,7 +134,7 @@ export default function HeaderSlider() {
     },
     {
       id: 5,
-      src: './public/img1.jpg',
+      src: 'img1.jpg',
       alt: 'پیش نمایش فیلم علمی تخیلی',
       title: 'دنیای آینده',
       description: 'تصویری از آینده‌ای که تکنولوژی بر همه چیز حاکم است',
@@ -144,7 +144,7 @@ export default function HeaderSlider() {
     },
     {
       id: 6,
-      src: './public/img2.jpeg',
+      src: 'img2.jpeg',
       alt: 'پوستر فیلم اکشن',
       title: 'انتقام‌جویان نهایی',
       description: 'نبرد نهایی قهرمانان برای نجات جهان از دست تانوس',
@@ -154,7 +154,7 @@ export default function HeaderSlider() {
     },
     {
       id: 7,
-      src: './public/img3.jpg',
+      src: 'img3.jpg',
       alt: 'صحنه فیلم کمدی',
       title: 'شب دیوانه',
       description: 'ماجراهای خنده‌دار سه دوست در یک شب به یاد ماندنی',
@@ -164,7 +164,7 @@ export default function HeaderSlider() {
     },
     {
       id: 8,
-      src: './public/img4.jpg',
+      src: 'img4.jpg',
       alt: 'فیلم درام',
       title: 'سکوت',
       description: 'داستان زندگی یک خانواده با رازهای پنهان و درام خانوادگی',
