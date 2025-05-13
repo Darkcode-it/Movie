@@ -1,0 +1,29 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "img": "/img/DeviceShowcase.jpg",
+            "title": "لپ‌تاپ و کامپیوتر"
+        },
+        {
+            "id": 2,
+            "img": "/img/DeviceShowcase.jpg",
+            "title": "موبایل و تبلت"
+        },
+        {
+            "id": 3,
+            "img": "/img/DeviceShowcase.jpg",
+            "title": "کنسول بازی"
+        },
+        {
+            "id": 4,
+            "img": "/img/DeviceShowcase.jpg",
+            "title": "تلویزیون هوشمند"
+        },
+        {
+            "id": 5,
+            "img": "/img/DeviceShowcase.jpg",
+            "title": "دستگاه‌های دیگر"
+        }
+    ]
+} 
