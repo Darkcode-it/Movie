@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -50,45 +51,54 @@ const StarRating = ({ rating }) => {
     </div>
   );
 };
-const MovieCard = ({ movie }) => (
-  <div className="aspect-[2/3] rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl relative group">
-    <img
-      src={movie.src}
-      alt={movie.alt}
-      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-      loading="lazy"
-    />
-    
-    {/* Overlay با تغییرات برای موبایل */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent 
-      opacity-0 
-      group-hover:opacity-100 
-      mobile:opacity-100
-      mobile:pointer-events-none
-      transition-opacity duration-300 
-      flex flex-col justify-end p-2 
-      sm:p-4">
-      <h3 className="text-white text-sm sm:text-lg font-bold mb-1">{movie.title}</h3>
-      <div className="flex items-center justify-between mb-1 sm:mb-2">
-        <span className="text-gray-300 text-xs sm:text-sm">{movie.year}</span>
-        <span className="text-gray-300 text-xs sm:text-sm bg-gray-800/80 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
-          {movie.genre}
-        </span>
+const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
+
+  const handleDetailsClick = () => {
+    navigate(`/Movie/details/${movie.id}`);
+  };
+
+  return (
+    <div className="aspect-[2/3] rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl relative group">
+      <img
+        src={movie.src}
+        alt={movie.alt}
+        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      />
+      
+      {/* Overlay با تغییرات برای موبایل */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent 
+        opacity-0 
+        group-hover:opacity-100 
+        mobile:opacity-100
+        mobile:pointer-events-none
+        transition-opacity duration-300 
+        flex flex-col justify-end p-2 
+        sm:p-4">
+        <h3 className="text-white text-sm sm:text-lg font-bold mb-1">{movie.title}</h3>
+        <div className="flex items-center justify-between mb-1 sm:mb-2">
+          <span className="text-gray-300 text-xs sm:text-sm">{movie.year}</span>
+          <span className="text-gray-300 text-xs sm:text-sm bg-gray-800/80 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
+            {movie.genre}
+          </span>
+        </div>
+        <StarRating rating={movie.rating} />
+        <p className="text-gray-200 text-[0.7rem] sm:text-sm mt-1 sm:mt-2 line-clamp-2 sm:line-clamp-3">
+          {movie.description}
+        </p>
+        <button 
+          onClick={handleDetailsClick}
+          className="mt-1.5 sm:mt-3 bg-red-600 hover:bg-red-700 text-white py-1 px-2 sm:py-2 sm:px-4 
+          rounded-md text-xs sm:text-sm font-medium transition-all duration-200 transform hover:scale-105"
+          aria-label={`جزئیات بیشتر درباره فیلم ${movie.title}`}
+        >
+          جزئیات بیشتر
+        </button>
       </div>
-      <StarRating rating={movie.rating} />
-      <p className="text-gray-200 text-[0.7rem] sm:text-sm mt-1 sm:mt-2 line-clamp-2 sm:line-clamp-3">
-        {movie.description}
-      </p>
-      <button 
-        className="mt-1.5 sm:mt-3 bg-red-600 hover:bg-red-700 text-white py-1 px-2 sm:py-2 sm:px-4 
-        rounded-md text-xs sm:text-sm font-medium transition-all duration-200 transform hover:scale-105"
-        aria-label={`جزئیات بیشتر درباره فیلم ${movie.title}`}
-      >
-        جزئیات بیشتر
-      </button>
     </div>
-  </div>
-);
+  );
+};
 
 export default function HeaderSlider() {
   const movies = [
@@ -217,7 +227,6 @@ export default function HeaderSlider() {
               </SwiperSlide>
             ))}
           </Swiper>
-
           {/* Navigation buttons */}
           <div className="swiper-button-next !text-red-500 hover:!text-red-600 after:!text-xl"></div>
           <div className="swiper-button-prev !text-red-500 hover:!text-red-600 after:!text-xl"></div>

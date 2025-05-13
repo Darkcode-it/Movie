@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Movies");
+  const [activeItem, setActiveItem] = useState("فیلم‌ها");
+  const [lang, setLang] = useState("fa");
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -13,11 +14,15 @@ export default function Nav() {
   };
 
   const navItems = [
-    { label: "Movies", href: "#" },
-    { label: "TV Shows", href: "#" },
-    { label: "Pip", href: "#" },
-    { label: "More", href: "#" },
+    { label: lang === "fa" ? "فیلم‌ها" : "Movies", href: "#" },
+    { label: lang === "fa" ? "سریال‌ها" : "TV Shows", href: "#" },
+    { label: lang === "fa" ? "کودک" : "Kids", href: "#" },
+    { label: lang === "fa" ? "بیشتر" : "More", href: "#" },
   ];
+
+  const handleLangChange = () => {
+    setLang((prev) => (prev === "fa" ? "en" : "fa"));
+  };
 
   return (
     <>
@@ -52,17 +57,23 @@ export default function Nav() {
 
           {/* Auth Section */}
           <div className="hidden items-center space-x-4 md:flex">
+            <button
+              onClick={handleLangChange}
+              className="rounded-2xl border border-amber-400 px-4 py-2 text-amber-400 hover:bg-amber-400 hover:text-slate-900 transition-colors duration-200"
+            >
+              {lang === "fa" ? "EN" : "FA"}
+            </button>
             <Link
               to="/Movie/login"
               className="text-slate-300 transition-colors duration-200 hover:text-white"
             >
-              Login
+              {lang === "fa" ? "ورود" : "Login"}
             </Link>
             <Link
               to="/Movie/register"
               className="rounded-3xl bg-rose-600 px-6 py-2 text-white transition-colors duration-200 hover:bg-rose-500"
             >
-              Sign Up
+              {lang === "fa" ? "ثبت‌نام" : "Sign Up"}
             </Link>
           </div>
 
@@ -108,17 +119,23 @@ export default function Nav() {
           </ul>
           
           <div className="flex items-center justify-center space-x-4 pt-2">
+            <button
+              onClick={handleLangChange}
+              className="rounded-2xl border border-amber-400 px-4 py-2 text-amber-400 hover:bg-amber-400 hover:text-slate-900 transition-colors duration-200"
+            >
+              {lang === "fa" ? "EN" : "FA"}
+            </button>
             <Link
               to="/Movie/login"
               className="text-slate-300 transition-colors duration-200 hover:text-white"
             >
-              Login
+              {lang === "fa" ? "ورود" : "Login"}
             </Link>
             <Link
               to="/Movie/register"
               className="rounded-2xl bg-rose-600 px-6 py-2 text-white transition-colors duration-200 hover:bg-rose-500"
             >
-              Sign Up
+              {lang === "fa" ? "ثبت‌نام" : "Sign Up"}
             </Link>
           </div>
         </div>

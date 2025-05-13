@@ -2,28 +2,28 @@
     "data": [
         {
             "id": 1,
-            "img": "../public/img (0).jpg",
+            "img": "/img (0).jpg",
             "title": "panda"
         },
         {
             "id": 2,
-            "img": "../public/img(1).jpeg",
+            "img": "/img(1).jpeg",
             "title": "panda"
         },
         {
             "id": 3,
-            "img": "../public/img(2).jpg",
+            "img": "/img(2).jpg",
             "title": "panda"
         },
         {
             "id": 4,
-            "img": "../public/img(3).jpg",
+            "img": "/img(3).jpg",
             "title": "panda"
         },
         {
             "id": 5,
-            "img": "../public/img(4).jpg",
+            "img": "/img(4).jpg",
             "title": "panda"
         }
     ]
-}
+} 

@@ -44,6 +44,7 @@
 import Home from "./pages/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import MovieDetails from "./pages/MovieDetails";
 import bg from "/public/bg.jpg"; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -75,6 +76,7 @@ export default function App() {
             <Route path="/Movie" element={<Home />} />
             <Route path="/Movie/login" element={<Login />} />
             <Route path="/Movie/register" element={<Register />} />
+            <Route path="/Movie/details/:id" element={<MovieDetails />} />
             <Route path="*" element={<div>404 Not Found</div>} />
           </Routes>
         </Router>

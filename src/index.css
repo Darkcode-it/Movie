@@ -1,22 +1,59 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-    font-family: "Open Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import "tailwindcss";
+
+
+
+html {
+  scroll-behavior: smooth;
 }
 
-@media (pointer: coarse) {
-    .mobile\:opacity-100 {
-      opacity: 1 !important;
-    }
-    .mobile\:pointer-events-none {
-      pointer-events: none !important;
-    }
-  }
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Import Lalezar font */
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+
+/* Default font for English */
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+@font-face {
+  font-family: 'Lalezar';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Lalezar'), url('./Components/fonts/Lalezar-Regular.ttf') format('ttf');
+}
+
+/* Font for Persian language - with lighter weight */
+html[lang="fa"] body {
+  font-family: "Lalezar", "Roboto", sans-serif;
+  font-weight: 300;  /* Lighter font weight */
+  letter-spacing: -0.5px;  /* Slightly reduce spacing between letters */
+}
+
+/* Additionally adjust heading font weights for Persian */
+html[lang="fa"] h1, 
+html[lang="fa"] h2, 
+html[lang="fa"] h3, 
+html[lang="fa"] h4, 
+html[lang="fa"] h5, 
+html[lang="fa"] h6 {
+  font-weight: 400;  /* Slightly heavier for headings but still not bold */
+}
+
+/* RTL support for Persian */
+html[lang="fa"] {
+  direction: rtl;
+}
+
+/* LTR support for English */
+html[lang="en"] {
+  direction: ltr;
+}
