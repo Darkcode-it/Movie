@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Lia500Px } from "react-icons/lia";
 import { TiThMenuOutline } from "react-icons/ti";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("فیلم‌ها");
   const [lang, setLang] = useState("fa");
+  const navigate = useNavigate();
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -14,10 +15,10 @@ export default function Nav() {
   };
 
   const navItems = [
-    { label: lang === "fa" ? "فیلم‌ها" : "Movies", href: "#" },
-    { label: lang === "fa" ? "سریال‌ها" : "TV Shows", href: "#" },
-    { label: lang === "fa" ? "کودک" : "Kids", href: "#" },
-    { label: lang === "fa" ? "بیشتر" : "More", href: "#" },
+    { label: lang === "fa" ? "فیلم‌ها" : "Movies", path: "/Movie/movies" },
+    { label: lang === "fa" ? "سریال‌ها" : "TV Shows", path: "/Movie/tv-shows" },
+    { label: lang === "fa" ? "کودک" : "Kids", path: "/Movie/children" },
+    { label: lang === "fa" ? "بیشتر" : "More", path: "/Movie/more" },
   ];
 
   const handleLangChange = () => {
@@ -30,26 +31,26 @@ export default function Nav() {
         <div className="container mx-auto flex items-center justify-between px-4 py-3">
           {/* Logo Section */}
           <div className="flex items-center space-x-8">
-            <div className="flex flex-col">
+            <Link to="/Movie" className="flex flex-col hover:opacity-80 transition-opacity">
               <h1 className="text-2xl font-medium text-slate-100">
                 Movis<span className="text-rose-500">Film</span>
               </h1>
               <p className="text-xs font-semibold text-slate-400">Film Review</p>
-            </div>
+            </Link>
             
             {/* Desktop Navigation */}
             <ul className="hidden space-x-4 md:flex">
               {navItems.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.path}
                     className={`px-3 py-2 text-sm transition-colors duration-200 hover:text-white lg:text-base ${
                       activeItem === item.label ? "text-rose-500" : "text-slate-300"
                     }`}
                     onClick={() => handleItemClick(item.label)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -93,7 +94,7 @@ export default function Nav() {
       </nav>
 
       {/* Mobile Navigation */}
-     <div
+      <div
         className={`bg-slate-800 transition-all duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
@@ -103,8 +104,8 @@ export default function Nav() {
           <ul className="space-y-2 border-b border-slate-700 pb-4">
             {navItems.map((item) => (
               <li key={item.label}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.path}
                   className={`block px-2 py-3 text-base transition-colors duration-200 ${
                     activeItem === item.label
                       ? "text-rose-500"
@@ -113,7 +114,7 @@ export default function Nav() {
                   onClick={() => handleItemClick(item.label)}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -140,7 +141,6 @@ export default function Nav() {
           </div>
         </div>
       </div>
-    
     </>
   );
 }
