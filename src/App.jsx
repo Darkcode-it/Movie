@@ -90,7 +90,7 @@ export default function App() {
       <div style={{ position: 'relative' }}>
         <Router>
           <Routes>
-            <Route path="/Movie" element={<Layout><Home /></Layout>} />
+            <Route path="/Movie/" element={<Layout><Home /></Layout>} />
             <Route path="/Movie/login" element={<Layout><Login /></Layout>} />
             <Route path="/Movie/register" element={<Layout><Register /></Layout>} />
             <Route path="/Movie/details/:id" element={<Layout><MovieDetails /></Layout>} />
@@ -108,7 +108,7 @@ export default function App() {
                 </ProtectedAdminRoute>
               } 
             />
-            <Route path="/" element={<Navigate to="/Movie" />} />
+            <Route path="/" element={<Navigate to="/Movie/" />} />
             <Route path="*" element={<Layout><div>404 Not Found</div></Layout>} />
           </Routes>
         </Router>
