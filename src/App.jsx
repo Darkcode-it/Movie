@@ -49,6 +49,7 @@ import TVShows from "./pages/TVShows";
 import ChildrenMovies from "./components/ChildrenMovies";
 import MoreMovies from "./components/MoreMovies";
 import Subscription from "./pages/Subscription";
+import CreateKidProfilePage from "./pages/CreateKidProfilePage";
 import Layout from "./components/Layout";
 import bg from "/public/bg.jpg"; 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -102,6 +103,7 @@ export default function App() {
             <Route path="/Movie/children" element={<Layout><ChildrenMovies /></Layout>} />
             <Route path="/Movie/more" element={<Layout><MoreMovies /></Layout>} />
             <Route path="/Movie/subscription" element={<Layout><Subscription /></Layout>} />
+            <Route path="/Movie/create-kid-profile" element={<Layout><CreateKidProfilePage /></Layout>} />
             <Route 
               path="/Movie/admin/*" 
               element={

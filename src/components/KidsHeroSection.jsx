@@ -25,6 +25,7 @@
 
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const KidsHeroSection = () => {
   return (
@@ -46,12 +47,15 @@ const KidsHeroSection = () => {
           </p>
 
           <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
-            <button className="group relative flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold rounded-xl px-8 py-4 md:py-5 text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl w-full md:w-auto">
+            <Link
+              to="/Movie/create-kid-profile"
+              className="group relative flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-500 text-gray-900 font-bold rounded-xl px-8 py-4 md:py-5 text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl w-full md:w-auto"
+            >
               <span>ساخت پروفایل کودک</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transition-transform group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
-            </button>
+            </Link>
 
             <button className="border-2 border-amber-400 hover:border-amber-500 text-amber-400 hover:text-amber-500 font-semibold rounded-xl px-8 py-4 md:py-5 text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full md:w-auto">
               شروع تماشا
