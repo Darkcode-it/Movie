@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { FaChild, FaBirthdayCake, FaUser, FaCamera, FaCheck, FaTimes } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { FaChild, FaBirthdayCake, FaUser, FaCamera, FaCheck, FaTimes, FaSpinner } from 'react-icons/fa';
 
 const CreateKidProfile = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     age: '',
@@ -12,6 +14,8 @@ const CreateKidProfile = () => {
 
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const ageGroups = [
     { value: '3-5', label: '3 تا 5 سال', icon: '🎈' },
@@ -88,18 +92,53 @@ const CreateKidProfile = () => {
     }
   };
 
+  // پشتیبانی از کلید Enter برای رفتن به مرحله بعد
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && step < 3) {
+      e.preventDefault();
+      handleNext();
+    }
+  };
+
   const handleBack = () => {
     if (step > 1) {
       setStep(step - 1);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // در اینجا می‌توانید داده‌ها را ذخیره کنید
-    console.log('پروفایل کودک ایجاد شد:', formData);
-    alert(`پروفایل ${formData.name} با موفقیت ایجاد شد!`);
-    // می‌توانید به صفحه بعد هدایت کنید
+    setIsLoading(true);
+
+    try {
+      // ایجاد شناسه یکتا برای پروفایل
+      const profileId = Date.now().toString();
+      const profileData = {
+        id: profileId,
+        ...formData,
+        createdAt: new Date().toISOString()
+      };
+
+      // دریافت پروفایل‌های موجود از localStorage
+      const existingProfiles = JSON.parse(localStorage.getItem('kidProfiles') || '[]');
+      
+      // افزودن پروفایل جدید
+      const updatedProfiles = [...existingProfiles, profileData];
+      localStorage.setItem('kidProfiles', JSON.stringify(updatedProfiles));
+      localStorage.setItem('activeKidProfile', JSON.stringify(profileData));
+
+      // نمایش پیام موفقیت
+      setIsSuccess(true);
+      
+      // منتظر ماندن کوتاه برای نمایش پیام موفقیت
+      setTimeout(() => {
+        navigate('/Movie/kids-watch');
+      }, 2000);
+    } catch (error) {
+      console.error('خطا در ذخیره پروفایل:', error);
+      setErrors({ submit: 'خطا در ذخیره پروفایل. لطفا دوباره تلاش کنید.' });
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -144,8 +183,25 @@ const CreateKidProfile = () => {
           </div>
         </div>
 
+        {/* Success Message */}
+        {isSuccess && (
+          <div className="bg-green-500/20 border-2 border-green-500 rounded-2xl p-8 text-center animate-fadeIn">
+            <div className="text-6xl mb-4 animate-bounce">✅</div>
+            <h3 className="text-3xl font-bold text-green-400 mb-3">
+              پروفایل با موفقیت ایجاد شد!
+            </h3>
+            <p className="text-green-300 text-lg mb-4">
+              در حال انتقال به صفحه کودکان...
+            </p>
+            <div className="flex justify-center">
+              <FaSpinner className="animate-spin text-green-400 text-2xl" />
+            </div>
+          </div>
+        )}
+
         {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-slate-800 rounded-2xl p-8 shadow-2xl">
+        {!isSuccess && (
+          <form onSubmit={handleSubmit} className="bg-slate-800 rounded-2xl p-8 shadow-2xl" onKeyDown={handleKeyPress}>
           {/* Step 1: Basic Information */}
           {step === 1 && (
             <div className="space-y-6 animate-fadeIn">
@@ -159,7 +215,16 @@ const CreateKidProfile = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter' && step === 1) {
+                      e.preventDefault();
+                      handleNext();
+                    }
+                  }}
                   placeholder="مثلا: علی، مریم"
+                  aria-label="نام کودک"
+                  aria-required="true"
+                  aria-invalid={!!errors.name}
                   className={`w-full px-4 py-3 rounded-xl bg-slate-700 text-white placeholder-gray-400 border-2 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
                     errors.name ? 'border-red-500' : 'border-slate-600'
                   }`}
@@ -186,7 +251,9 @@ const CreateKidProfile = () => {
                         setFormData(prev => ({ ...prev, age: age.value }));
                         if (errors.age) setErrors(prev => ({ ...prev, age: '' }));
                       }}
-                      className={`p-6 rounded-xl border-2 transition-all transform hover:scale-105 ${
+                      aria-label={`انتخاب گروه سنی ${age.label}`}
+                      aria-pressed={formData.age === age.value}
+                      className={`p-6 rounded-xl border-2 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
                         formData.age === age.value
                           ? 'bg-amber-500 border-amber-500 text-white'
                           : 'bg-slate-700 border-slate-600 text-gray-300 hover:border-amber-500'
@@ -227,7 +294,9 @@ const CreateKidProfile = () => {
                         setFormData(prev => ({ ...prev, gender: gender.value }));
                         if (errors.gender) setErrors(prev => ({ ...prev, gender: '' }));
                       }}
-                      className={`p-6 rounded-xl border-2 transition-all transform hover:scale-105 ${
+                      aria-label={`انتخاب جنسیت ${gender.label}`}
+                      aria-pressed={formData.gender === gender.value}
+                      className={`p-6 rounded-xl border-2 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
                         formData.gender === gender.value
                           ? 'bg-amber-500 border-amber-500 text-white'
                           : 'bg-slate-700 border-slate-600 text-gray-300 hover:border-amber-500'
@@ -260,7 +329,9 @@ const CreateKidProfile = () => {
                         setFormData(prev => ({ ...prev, avatar }));
                         if (errors.avatar) setErrors(prev => ({ ...prev, avatar: '' }));
                       }}
-                      className={`text-4xl p-4 rounded-xl border-2 transition-all transform hover:scale-110 ${
+                      aria-label={`انتخاب آواتار ${avatar}`}
+                      aria-pressed={formData.avatar === avatar}
+                      className={`text-4xl p-4 rounded-xl border-2 transition-all transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
                         formData.avatar === avatar
                           ? 'bg-amber-500 border-amber-500 scale-110'
                           : 'bg-slate-700 border-slate-600 hover:border-amber-500'
@@ -288,7 +359,9 @@ const CreateKidProfile = () => {
                       key={interest.id}
                       type="button"
                       onClick={() => handleInterestToggle(interest.id)}
-                      className={`p-4 rounded-xl border-2 transition-all transform hover:scale-105 flex items-center gap-2 ${
+                      aria-label={`${formData.interests.includes(interest.id) ? 'حذف' : 'افزودن'} علاقه ${interest.label}`}
+                      aria-pressed={formData.interests.includes(interest.id)}
+                      className={`p-4 rounded-xl border-2 transition-all transform hover:scale-105 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-amber-500 ${
                         formData.interests.includes(interest.id)
                           ? 'bg-amber-500 border-amber-500 text-white'
                           : 'bg-slate-700 border-slate-600 text-gray-300 hover:border-amber-500'
@@ -315,6 +388,15 @@ const CreateKidProfile = () => {
                   {formData.gender === 'male' ? 'پسر' : 'دختر'}
                 </p>
               </div>
+
+              {errors.submit && (
+                <div className="bg-red-500/20 border-2 border-red-500 rounded-xl p-4">
+                  <p className="text-red-400 text-sm flex items-center gap-2">
+                    <FaTimes />
+                    {errors.submit}
+                  </p>
+                </div>
+              )}
 
               {formData.interests.length > 0 && (
                 <div>
@@ -351,7 +433,9 @@ const CreateKidProfile = () => {
               <button
                 type="button"
                 onClick={handleBack}
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-semibold transition-all"
+                disabled={isLoading || isSuccess}
+                aria-label="مرحله قبلی"
+                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-xl font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-slate-500"
               >
                 قبلی
               </button>
@@ -363,21 +447,35 @@ const CreateKidProfile = () => {
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-semibold transition-all transform hover:scale-105"
+                aria-label="مرحله بعد"
+                disabled={isLoading || isSuccess}
+                className="px-8 py-3 bg-amber-500 hover:bg-amber-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-xl font-semibold transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400"
               >
                 بعدی
               </button>
             ) : (
               <button
                 type="submit"
-                className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center gap-2"
+                disabled={isLoading || isSuccess}
+                aria-label="ایجاد پروفایل کودک"
+                className="px-8 py-3 bg-green-500 hover:bg-green-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-400"
               >
-                <FaCheck />
-                ایجاد پروفایل
+                {isLoading ? (
+                  <>
+                    <FaSpinner className="animate-spin" />
+                    در حال ذخیره...
+                  </>
+                ) : (
+                  <>
+                    <FaCheck />
+                    ایجاد پروفایل
+                  </>
+                )}
               </button>
             )}
           </div>
         </form>
+        )}
       </div>
     </section>
   );
