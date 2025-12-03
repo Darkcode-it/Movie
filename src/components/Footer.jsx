@@ -26,12 +26,13 @@ export default function Footer() {
         <div className="flex gap-4 text-xl">
           <a href="https://t.me/Darkcodeit" className="hover:text-amber-400 transition" aria-label="تلگرام"><FaTelegram /></a>
           <a href="https://github.com/Darkcode-it" className="hover:text-amber-400 transition" aria-label="گیت‌هاب"><FaGithub /></a>
+          <a href="https://www.instagram.com/darkcodeit/" className="hover:text-amber-400 transition" aria-label="اینستاگرام"><FaInstagram /></a>
         </div>
       </div>
       <div className="mt-8 text-center text-xs text-gray-500">
       <h1>
       
-      من احمد رسولی به  عنوان یک توسعه‌دهنده متعهد به فلسفه اپن سورس، همواره در توسعه و بهبود پروژه‌های متن‌باز مشارکت فعال داشته‌ام. باور دارم که اشتراک دانش و همکاری جمعی نه تنها به پیشرفت فناوری کمک می‌کند، بلکه جامعه‌ای پویا و فراگیر را شکل می‌دهد. </h1>
+      من احمد رسولی مشهور به (DarkCodeIT) به  عنوان یک توسعه‌دهنده متعهد به فلسفه اپن سورس، همواره در توسعه و بهبود پروژه‌های متن‌باز مشارکت فعال داشته‌ام. باور دارم که اشتراک دانش و همکاری جمعی نه تنها به پیشرفت فناوری کمک می‌کند، بلکه جامعه‌ای پویا و فراگیر را شکل می‌دهد. </h1>
       </div>
     </footer>
   );
