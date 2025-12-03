@@ -57,7 +57,7 @@
 // } 
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaChevronRight, FaChevronLeft, FaUserCircle, FaQuoteLeft } from "react-icons/fa";
 
 const COMMENTS = [
@@ -96,10 +96,7 @@ const CommentsCarousel = () => {
     setTimeout(() => setIsAnimating(false), 300);
   };
 
-  useEffect(() => {
-    const autoPlay = setInterval(() => handleNavigation('next'), 5000);
-    return () => clearInterval(autoPlay);
-  }, []);
+  // autoPlay حذف شده - نظرات فقط با کلیک دستی کاربر تغییر می‌کنند
 
   return (
     <section className="w-full bg-gray-900 py-16 px-4">
@@ -113,69 +110,81 @@ const CommentsCarousel = () => {
         </h2>
 
         <div className="relative group">
-          {/* Navigation Arrows */}
-          <div className="hidden md:flex justify-between items-center absolute inset-0 z-10">
+          {/* Navigation Arrows - همیشه قابل مشاهده و قابل استفاده */}
+          <div className="flex justify-between items-center absolute inset-0 z-10 pointer-events-none px-2">
             <button
               onClick={() => handleNavigation('prev')}
+              disabled={isAnimating}
               aria-label="نظر قبلی"
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-black/80 text-white hover:bg-amber-500 transition-transform transform -translate-x-12 group-hover:translate-x-0 duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/90 backdrop-blur-sm text-white hover:bg-amber-500 active:bg-amber-600 transition-all pointer-events-auto shadow-lg hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
-              <FaChevronRight className="text-xl" />
+              <FaChevronRight className="text-lg md:text-xl" />
             </button>
             
             <button
               onClick={() => handleNavigation('next')}
+              disabled={isAnimating}
               aria-label="نظر بعدی"
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-black/80 text-white hover:bg-amber-500 transition-transform transform translate-x-12 group-hover:translate-x-0 duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/90 backdrop-blur-sm text-white hover:bg-amber-500 active:bg-amber-600 transition-all pointer-events-auto shadow-lg hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
-              <FaChevronLeft className="text-xl" />
+              <FaChevronLeft className="text-lg md:text-xl" />
             </button>
           </div>
 
           {/* Carousel Container */}
-          <div className="overflow-hidden relative h-[400px] md:h-[300px]">
-            <div 
-              className={`flex transition-transform duration-300 ease-in-out ${
-                isAnimating ? 'opacity-75' : 'opacity-100'
-              }`}
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {COMMENTS.map((comment) => (
-                <div 
-                  key={comment.id}
-                  className="min-w-full px-4 flex items-center justify-center"
-                >
-                  <div className="w-full md:w-2/3 lg:w-1/2 bg-gray-800 rounded-xl p-8 border border-gray-700 relative">
-                    <FaQuoteLeft className="absolute top-6 left-6 text-3xl text-amber-500/20" />
-                    
-                    <div className="flex items-center gap-3 mb-6">
-                      <FaUserCircle className="text-2xl text-amber-500" />
-                      <span className="text-lg font-medium text-gray-200">
-                        {comment.name}
-                      </span>
-                    </div>
-
-                    <p className="text-gray-300 leading-relaxed text-lg text-justify">
-                      {comment.text}
-                    </p>
+          <div className="relative min-h-[300px] md:min-h-[250px] flex items-center justify-center">
+            {COMMENTS.map((comment, idx) => (
+              <div
+                key={comment.id}
+                className={`absolute inset-0 px-4 flex items-center justify-center transition-all duration-300 ease-in-out ${
+                  idx === currentIndex
+                    ? 'opacity-100 scale-100 z-10'
+                    : 'opacity-0 scale-95 pointer-events-none z-0'
+                }`}
+              >
+                <div className="w-full md:w-2/3 lg:w-1/2 bg-gray-800 rounded-xl p-8 border border-gray-700 relative">
+                  <FaQuoteLeft className="absolute top-6 left-6 text-3xl text-amber-500/20" />
+                  
+                  <div className="flex items-center gap-3 mb-6">
+                    <FaUserCircle className="text-2xl text-amber-500" />
+                    <span className="text-lg font-medium text-gray-200">
+                      {comment.name}
+                    </span>
                   </div>
+
+                  <p className="text-gray-300 leading-relaxed text-lg text-justify">
+                    {comment.text}
+                  </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          {/* Pagination Dots - کنترل دستی برای رفتن مستقیم به هر نظر */}
+          <div className="flex justify-center items-center gap-3 mt-8">
             {COMMENTS.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  idx === currentIndex ? 'bg-amber-500 scale-125' : 'bg-gray-600'
+                onClick={() => {
+                  if (!isAnimating && idx !== currentIndex) {
+                    setIsAnimating(true);
+                    setCurrentIndex(idx);
+                    setTimeout(() => setIsAnimating(false), 300);
+                  }
+                }}
+                disabled={isAnimating}
+                className={`transition-all rounded-full focus:outline-none focus:ring-2 focus:ring-amber-400 disabled:cursor-not-allowed ${
+                  idx === currentIndex 
+                    ? 'w-10 h-3 bg-amber-500 scale-100' 
+                    : 'w-3 h-3 bg-gray-600 hover:bg-gray-500 hover:scale-110'
                 }`}
-                aria-label={`نظر ${idx + 1}`}
+                aria-label={`رفتن به نظر ${idx + 1}`}
+                aria-current={idx === currentIndex ? 'true' : 'false'}
               />
             ))}
+            <span className="text-sm text-gray-400 mr-2">
+              {currentIndex + 1} از {COMMENTS.length}
+            </span>
           </div>
         </div>
       </div>
