@@ -50,6 +50,7 @@ import ChildrenMovies from "./components/ChildrenMovies";
 import MoreMovies from "./components/MoreMovies";
 import Subscription from "./pages/Subscription";
 import CreateKidProfilePage from "./pages/CreateKidProfilePage";
+import KidsWatchPage from "./pages/KidsWatchPage";
 import Layout from "./components/Layout";
 import bg from "/public/bg.jpg"; 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -104,6 +105,7 @@ export default function App() {
             <Route path="/Movie/more" element={<Layout><MoreMovies /></Layout>} />
             <Route path="/Movie/subscription" element={<Layout><Subscription /></Layout>} />
             <Route path="/Movie/create-kid-profile" element={<Layout><CreateKidProfilePage /></Layout>} />
+            <Route path="/Movie/kids-watch" element={<Layout><KidsWatchPage /></Layout>} />
             <Route 
               path="/Movie/admin/*" 
               element={

@@ -8,7 +8,7 @@ const Subscription = () => {
     return (
         <div>
             <Header />
-            <FollowUs />
+           
             <SubscriptionPlans />
             <Footer />
         </div>

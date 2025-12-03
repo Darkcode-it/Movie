@@ -57,9 +57,12 @@ const KidsHeroSection = () => {
               </svg>
             </Link>
 
-            <button className="border-2 border-amber-400 hover:border-amber-500 text-amber-400 hover:text-amber-500 font-semibold rounded-xl px-8 py-4 md:py-5 text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full md:w-auto">
+            <Link
+              to="/Movie/kids-watch"
+              className="border-2 border-amber-400 hover:border-amber-500 text-amber-400 hover:text-amber-500 font-semibold rounded-xl px-8 py-4 md:py-5 text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full md:w-auto text-center"
+            >
               شروع تماشا
-            </button>
+            </Link>
           </div>
         </div>
 

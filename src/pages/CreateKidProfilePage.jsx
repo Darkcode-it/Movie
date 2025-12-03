@@ -8,7 +8,7 @@ const CreateKidProfilePage = () => {
     return (
         <div>
             <Header />
-            <FollowUs />
+         
             <CreateKidProfile />
             <Footer />
         </div>
