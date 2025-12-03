@@ -54,6 +54,9 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,json}'],
+        // Do not precache very large assets; they will still be served normally
+        // and cached at runtime by the image runtimeCaching rule below.
+        maximumFileSizeToCacheInBytes: 8 * 1024 * 1024, // 8 MiB
         runtimeCaching: [
           {
             urlPattern: ({ url }) => url.origin === self.location.origin,
