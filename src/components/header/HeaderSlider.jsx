@@ -229,9 +229,9 @@ export default function HeaderSlider() {
   };
 
   return (
-    <section className="relative py-12">
+    <section className="relative py-5">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold text-gray-100 mb-8">فیلم‌های پیشنهادی</h2>
+        <h2 className="text-2xl font-bold text-gray-100 mb-4">فیلم‌های پیشنهادی</h2>
 
         <div className="relative ">
           <Swiper {...swiperConfig} className="swiper-container ">

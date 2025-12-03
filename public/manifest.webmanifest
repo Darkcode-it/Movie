@@ -1,0 +1,38 @@
+{
+  "name": "Movie PWA",
+  "short_name": "Movie",
+  "description": "پلتفرم تماشای فیلم و سریال",
+  "theme_color": "#020617",
+  "background_color": "#020617",
+  "display": "standalone",
+  "start_url": "/Movie/",
+  "scope": "/Movie/",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
+
+

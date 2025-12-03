@@ -52,6 +52,7 @@ import Subscription from "./pages/Subscription";
 import CreateKidProfilePage from "./pages/CreateKidProfilePage";
 import KidsWatchPage from "./pages/KidsWatchPage";
 import Layout from "./components/Layout";
+import InstallPrompt from "./components/InstallPrompt";
 import bg from "/public/bg.jpg"; 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -91,6 +92,7 @@ export default function App() {
         }}
       ></div>
       <div style={{ position: 'relative' }}>
+        <InstallPrompt />
         <Router>
           <Routes>
             <Route path="/Movie/" element={<Layout><Home /></Layout>} />
