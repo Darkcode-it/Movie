@@ -11,9 +11,9 @@ export default function SearchBox() {
         <input
           id="searchInput"
           type="text"
-          placeholder="🎬 چه فیلمی دنبالش میگردید؟"
+          placeholder="🎬    سرچ کن برات بیارم..."
           className="w-full bg-slate-800 text-slate-300 placeholder-slate-500 
-                     text-lg md:text-xl lg:text-2xl
+                     text-lg md:text-xl lg:text-xxl
                      px-6 py-4 md:py-5
                      rounded-xl border-2 border-slate-700
                      focus:outline-none focus:border-rose-600 focus:ring-2 
@@ -24,7 +24,7 @@ export default function SearchBox() {
         />
         
         <CiSearch 
-          className="absolute right-4 top-1/2 -translate-y-1/2
+          className="absolute left-4 top-1/2 -translate-y-1/2
                     w-7 h-7 md:w-8 md:h-8
                     text-slate-500 group-focus-within:text-rose-600
                     transition-colors duration-300

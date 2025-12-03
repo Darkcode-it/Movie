@@ -16,19 +16,19 @@ html {
 /* Import Roboto font */
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Import Lalezar font */
-@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
-
 /* Default font for English */
 body {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
 }
+
+/* Import Lalezar font from local file */
 @font-face {
   font-family: 'Lalezar';
   font-style: normal;
-  font-weight: normal;
-  src: local('Lalezar'), url('./Components/fonts/Lalezar-Regular.ttf') format('ttf');
+  font-weight: 400;
+  src: url('./components/fonts/Lalezar-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 /* Font for Persian language - with lighter weight */

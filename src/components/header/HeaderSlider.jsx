@@ -1,3 +1,4 @@
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
@@ -51,8 +52,9 @@ const StarRating = ({ rating }) => {
     </div>
   );
 };
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, isFirst }) => {
   const navigate = useNavigate();
+  const [imageLoaded, setImageLoaded] = React.useState(false);
 
   const handleDetailsClick = () => {
     navigate(`/Movie/details/${movie.id}`);
@@ -60,11 +62,21 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div className="aspect-[2/3] rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl relative group">
+      {!imageLoaded && (
+        <div className="absolute inset-0 bg-slate-800 animate-pulse flex items-center justify-center">
+          <div className="text-slate-600 text-sm">در حال بارگذاری...</div>
+        </div>
+      )}
       <img
         src={movie.src}
         alt={movie.alt}
-        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-        loading="lazy"
+        className={`w-full h-full object-cover hover:scale-105 transition-transform duration-300 ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        loading={isFirst ? "eager" : "lazy"}
+        fetchPriority={isFirst ? "high" : "auto"}
+        onLoad={() => setImageLoaded(true)}
+        decoding="async"
       />
       
       {/* Overlay با تغییرات برای موبایل */}
@@ -101,10 +113,12 @@ const MovieCard = ({ movie }) => {
 };
 
 export default function HeaderSlider() {
+  const baseUrl = import.meta.env.BASE_URL;
+  
   const movies = [
     {
       id: 1,
-      src: 'img/film.jpg',
+      src: `${baseUrl}img/film.jpg`,
       alt: 'پوستر فیلم اکشن',
       title: 'ماموریت غیرممکن',
       description: 'یک فیلم اکشن پر از تعقیب و گریز و سکانس‌های نفس‌گیر با بازی تام کروز',
@@ -114,7 +128,7 @@ export default function HeaderSlider() {
     },
     {
       id: 2,
-      src: 'img/film1.jpg',
+      src: `${baseUrl}img/film1.jpg`,
       alt: 'صحنه فیلم کمدی',
       title: 'مردان بد',
       description: 'کمدی سیاه با بازی درخشان ویل اسمیت و مارتین لارنس',
@@ -124,7 +138,7 @@ export default function HeaderSlider() {
     },
     {
       id: 3,
-      src: 'img/film5.jpg',
+      src: `${baseUrl}img/film5.jpg`,
       alt: 'فیلم درام',
       title: 'راه رفتن در باران',
       description: 'داستان عاشقانه‌ای که در پس‌زمینه‌ای تاریخی روایت می‌شود',
@@ -134,7 +148,7 @@ export default function HeaderSlider() {
     },
     {
       id: 4,
-      src: 'img/film3.jpg',
+      src: `${baseUrl}img/film3.jpg`,
       alt: 'پیش نمایش فیلم علمی تخیلی',
       title: 'کهکشان بی‌پایان',
       description: 'سفر بین ستاره‌ای گروهی از فضانوردان برای نجات بشریت',
@@ -144,7 +158,7 @@ export default function HeaderSlider() {
     },
     {
       id: 5,
-      src: 'img1.jpg',
+      src: `${baseUrl}img/img1.jpg`,
       alt: 'پیش نمایش فیلم علمی تخیلی',
       title: 'دنیای آینده',
       description: 'تصویری از آینده‌ای که تکنولوژی بر همه چیز حاکم است',
@@ -154,7 +168,7 @@ export default function HeaderSlider() {
     },
     {
       id: 6,
-      src: 'img2.jpeg',
+      src: `${baseUrl}img/img2.jpeg`,
       alt: 'پوستر فیلم اکشن',
       title: 'انتقام‌جویان نهایی',
       description: 'نبرد نهایی قهرمانان برای نجات جهان از دست تانوس',
@@ -164,7 +178,7 @@ export default function HeaderSlider() {
     },
     {
       id: 7,
-      src: 'img3.jpg',
+      src: `${baseUrl}img/img3.jpg`,
       alt: 'صحنه فیلم کمدی',
       title: 'شب دیوانه',
       description: 'ماجراهای خنده‌دار سه دوست در یک شب به یاد ماندنی',
@@ -174,7 +188,7 @@ export default function HeaderSlider() {
     },
     {
       id: 8,
-      src: 'img4.jpg',
+      src: `${baseUrl}img/img4.jpg`,
       alt: 'فیلم درام',
       title: 'سکوت',
       description: 'داستان زندگی یک خانواده با رازهای پنهان و درام خانوادگی',
@@ -221,9 +235,9 @@ export default function HeaderSlider() {
 
         <div className="relative ">
           <Swiper {...swiperConfig} className="swiper-container ">
-            {movies.map((movie) => (
+            {movies.map((movie, index) => (
               <SwiperSlide  key={movie.id}>
-                <MovieCard movie={movie} />
+                <MovieCard movie={movie} isFirst={index < 4} />
               </SwiperSlide>
             ))}
           </Swiper>

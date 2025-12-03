@@ -4,28 +4,57 @@ import { FaGithub } from "react-icons/fa6";
 import { FaTelegram } from "react-icons/fa6";
 function FollowUs() {
     return (
-        <section>
-            <div>
-                <span>
-                    <ul className="  flex container mx-auto
-                     mt-5 gap-4 text-center items-center
-                      justify-end text-slate-200 pr-10">
-
-                        Follow Us :
-
-                        <li><a href="#"></a><FaInstagram size="20"
-                         className="hover:text-rose-500" /></li>
-                        <li><a href="https://www.facebook.com/DarkCodeit"></a><CiFacebook size="20"
-                            className="hover:text-rose-500" /></li>
-                        <li><a href="https://github.com/Darkcode-it"></a><FaGithub size="20" 
-                        className="hover:text-rose-500" /></li>
-                        <li><a href="https://t.me/Darkcodeit"></a><FaTelegram size="20"
-                            className="hover:text-rose-500" /></li>
-                    </ul>
-                </span>
+        <section className="w-full py-4">
+            <div className="container mx-auto px-4">
+                <ul className="flex items-center justify-end gap-4 text-slate-200">
+                    <li className="text-sm font-medium">Follow Us :</li>
+                    <li>
+                        <a 
+                            href="https://www.instagram.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:text-rose-500 transition-colors"
+                            aria-label="اینستاگرام"
+                        >
+                            <FaInstagram size="20" />
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href="https://www.facebook.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:text-rose-500 transition-colors"
+                            aria-label="فیس‌بوک"
+                        >
+                            <CiFacebook size="20" />
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href="https://github.com/Darkcode-it" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:text-rose-500 transition-colors"
+                            aria-label="گیت‌هاب"
+                        >
+                            <FaGithub size="20" />
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href="https://t.me/Darkcodeit" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:text-rose-500 transition-colors"
+                            aria-label="تلگرام"
+                        >
+                            <FaTelegram size="20" />
+                        </a>
+                    </li>
+                </ul>
             </div>
         </section>
-
     );
 }
 
