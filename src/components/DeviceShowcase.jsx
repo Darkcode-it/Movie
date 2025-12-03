@@ -1,5 +1,6 @@
 import { FaLaptop, FaMobileAlt, FaGamepad, FaShoppingCart } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import SkeletonLoader from "./SkeletonLoader";
 import ErrorFallback from "./ErrorFallback";
 
@@ -109,14 +110,15 @@ const DeviceShowcase = () => {
               />
             </ul>
 
-            <button
+            <Link
+              to="/Movie/subscription"
               className="inline-flex items-center gap-3 bg-rose-500 hover:bg-emerald-600
                text-white font-bold px-8 py-4 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
               aria-label="خرید اشتراک"
             >
               <FaShoppingCart className="text-xl" />
               <span>خرید اشتراک ویژه</span>
-            </button>
+            </Link>
           </div>
 
           {/* Image Grid */}
