@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCheck, FaCrown, FaRocket, FaStar, FaTimes, FaSparkles } from 'react-icons/fa';
+import { FaCheck, FaCrown, FaRocket, FaStar } from 'react-icons/fa';
 
 const SubscriptionPlans = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
