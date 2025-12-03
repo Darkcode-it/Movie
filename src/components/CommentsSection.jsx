@@ -84,12 +84,16 @@ const CommentsCarousel = () => {
 
   const handleNavigation = (direction) => {
     if (isAnimating) return;
+    
     setIsAnimating(true);
     
     setCurrentIndex(prev => {
-      const newIndex = direction === 'next' 
-        ? (prev + 1) % COMMENTS.length 
-        : (prev - 1 + COMMENTS.length) % COMMENTS.length;
+      let newIndex;
+      if (direction === 'next') {
+        newIndex = (prev + 1) % COMMENTS.length;
+      } else {
+        newIndex = prev === 0 ? COMMENTS.length - 1 : prev - 1;
+      }
       return newIndex;
     });
 
@@ -110,36 +114,15 @@ const CommentsCarousel = () => {
         </h2>
 
         <div className="relative group">
-          {/* Navigation Arrows - همیشه قابل مشاهده و قابل استفاده */}
-          <div className="flex justify-between items-center absolute inset-0 z-10 pointer-events-none px-2">
-            <button
-              onClick={() => handleNavigation('prev')}
-              disabled={isAnimating}
-              aria-label="نظر قبلی"
-              className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/90 backdrop-blur-sm text-white hover:bg-amber-500 active:bg-amber-600 transition-all pointer-events-auto shadow-lg hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-amber-400"
-            >
-              <FaChevronRight className="text-lg md:text-xl" />
-            </button>
-            
-            <button
-              onClick={() => handleNavigation('next')}
-              disabled={isAnimating}
-              aria-label="نظر بعدی"
-              className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/90 backdrop-blur-sm text-white hover:bg-amber-500 active:bg-amber-600 transition-all pointer-events-auto shadow-lg hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-amber-400"
-            >
-              <FaChevronLeft className="text-lg md:text-xl" />
-            </button>
-          </div>
-
           {/* Carousel Container */}
-          <div className="relative min-h-[300px] md:min-h-[250px] flex items-center justify-center">
+          <div className="relative min-h-[300px] md:min-h-[250px] flex items-center justify-center overflow-hidden">
             {COMMENTS.map((comment, idx) => (
               <div
                 key={comment.id}
-                className={`absolute inset-0 px-4 flex items-center justify-center transition-all duration-300 ease-in-out ${
+                className={`absolute inset-0 px-4 flex items-center justify-center transition-all duration-300 ease-in-out pointer-events-none ${
                   idx === currentIndex
-                    ? 'opacity-100 scale-100 z-10'
-                    : 'opacity-0 scale-95 pointer-events-none z-0'
+                    ? 'opacity-100 scale-100'
+                    : 'opacity-0 scale-95'
                 }`}
               >
                 <div className="w-full md:w-2/3 lg:w-1/2 bg-gray-800 rounded-xl p-8 border border-gray-700 relative">
@@ -159,6 +142,33 @@ const CommentsCarousel = () => {
               </div>
             ))}
           </div>
+
+          {/* Navigation Arrows - همیشه قابل مشاهده و قابل استفاده */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleNavigation('prev');
+            }}
+            disabled={isAnimating}
+            aria-label="نظر قبلی"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/90 backdrop-blur-sm text-white hover:bg-amber-500 active:bg-amber-600 transition-all shadow-lg hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-amber-400"
+          >
+            <FaChevronRight className="text-lg md:text-xl" />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleNavigation('next');
+            }}
+            disabled={isAnimating}
+            aria-label="نظر بعدی"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/90 backdrop-blur-sm text-white hover:bg-amber-500 active:bg-amber-600 transition-all shadow-lg hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-amber-400"
+          >
+            <FaChevronLeft className="text-lg md:text-xl" />
+          </button>
 
           {/* Pagination Dots - کنترل دستی برای رفتن مستقیم به هر نظر */}
           <div className="flex justify-center items-center gap-3 mt-8">
