@@ -5,7 +5,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Movie/",
+  // For Vercel deployment we serve from the root path
+  base: "/",
   plugins: [
     react(),
     tailwindcss(),
@@ -22,8 +23,8 @@ export default defineConfig({
         theme_color: '#020617',
         background_color: '#020617',
         display: 'standalone',
-        start_url: '/Movie/',
-        scope: '/Movie/',
+        start_url: '/',
+        scope: '/',
         lang: 'fa',
         dir: 'rtl',
         icons: [
