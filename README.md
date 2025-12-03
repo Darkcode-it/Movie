@@ -1,121 +1,149 @@
-# Movie App 🎬
+## Movie – Modern Movie Streaming UI 🎬
 
 [English](#english) | [فارسی](#persian)
 
+<div align="center">
+
+  <img src="./public/movis.png" alt="Movie App main screen" width="800" />
+
+  <br /><br />
+
+  <img src="./public/movis2.png" alt="Movie App secondary screen" width="800" />
+
+</div>
+
+---
+
 ## English
 
-### Description
-A modern web application for browsing and discovering movies, built with React and Vite. This project provides a user-friendly interface for movie enthusiasts to explore their favorite films.
+### Overview
+Movie is a modern, Netflix‑style movie and TV streaming UI built with **React**, **Vite**, **Tailwind CSS 4**, and **PWA** support.  
+It focuses on clean UX, fast performance, and full Farsi (RTL) support, making it a great portfolio‑ready front‑end project.
 
-### Features
-- 🎯 Modern and responsive design
-- 🔍 Movie search functionality
-- 🎨 Beautiful UI with Tailwind CSS
-- 📱 Mobile-friendly interface
-- ⚡ Fast performance with Vite
-- 🔄 Smooth animations with Swiper
+### Key Features
+- **Modern landing page** with hero section, categories, highlights, and call‑to‑action
+- **Kids profile experience** with a safe and colorful UI for children
+- **Movie & series sections** with sliders and cards using Swiper
+- **Admin area** (login + simple dashboard) for managing content
+- **Responsive design** optimized for desktop, tablet, and mobile
+- **PWA ready** – installable, offline‑friendly experience
+- **Full RTL support** for Persian, with custom `Lalezar` font integration
 
-### Technologies Used
-- React 19
-- Vite 6
-- Tailwind CSS 4
-- React Router DOM 7
-- Swiper
-- React Icons
+### Tech Stack
+- **React 19**
+- **Vite 6**
+- **Tailwind CSS 4 (@tailwindcss/vite)**
+- **React Router DOM 7**
+- **Swiper**
+- **Axios**
+- **React Icons**
+- **vite-plugin-pwa**
 
 ### Getting Started
 
 #### Prerequisites
-- Node.js (Latest LTS version recommended)
-- npm or yarn
+- Node.js (LTS recommended)
+- npm
 
 #### Installation
-1. Clone the repository
 ```bash
+# 1. Clone the repository
 git clone https://github.com/darkcode-it/Movie.git
-```
 
-2. Navigate to the project directory
-```bash
+# 2. Go into the project directory
 cd Movie
-```
 
-3. Install dependencies
-```bash
+# 3. Install dependencies
 npm install
-```
 
-4. Start the development server
-```bash
+# 4. Start the dev server
 npm run dev
 ```
 
-### Available Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run deploy` - Deploy to GitHub Pages
+#### Production Build
+```bash
+# Build for production
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+### Scripts
+- **`npm run dev`** – start development server
+- **`npm run build`** – build for production
+- **`npm run preview`** – preview production build
+- **`npm run lint`** – run ESLint
+- **`npm run deploy`** – deploy to GitHub Pages
 
 ### Live Demo
-Visit the live demo: [Movie App](https://darkcode-it.github.io/Movie/)
+- **GitHub Pages**: [Movie App](https://darkcode-it.github.io/Movie/)
+- **Vercel**: *(add your Vercel URL here)*
 
 ---
 
 ## Persian
 
-### توضیحات
-یک برنامه وب مدرن برای مرور و کشف فیلم‌ها، ساخته شده با React و Vite. این پروژه یک رابط کاربری کاربرپسند برای علاقه‌مندان به فیلم فراهم می‌کند.
+### معرفی پروژه
+Movie یک رابط کاربری مدرن و شبیه نتفلیکس برای تماشای فیلم و سریال است که با **React**, **Vite**, **Tailwind CSS 4** و **PWA** ساخته شده.  
+تمرکز این پروژه روی تجربه کاربری جذاب، عملکرد سریع، و پشتیبانی کامل از زبان فارسی و راست‌چین (RTL) است.
 
 ### ویژگی‌ها
-- 🎯 طراحی مدرن و واکنش‌گرا
-- 🔍 قابلیت جستجوی فیلم
-- 🎨 رابط کاربری زیبا با Tailwind CSS
-- 📱 سازگار با موبایل
-- ⚡ عملکرد سریع با Vite
-- 🔄 انیمیشن‌های روان با Swiper
+- **صفحه اصلی جذاب** همراه با هیرو، بخش دسته‌بندی‌ها، اسلایدرها و پیشنهاد فیلم
+- **محیط مخصوص کودکان (Kids Profile)** با طراحی رنگی و امن برای بچه‌ها
+- **بخش‌های فیلم و سریال** با کارت‌ها و اسلایدرهای حرفه‌ای (Swiper)
+- **پنل ساده ادمین** (ورود ادمین و داشبورد سبک برای مدیریت محتوا)
+- **طراحی واکنش‌گرا** برای دسکتاپ، تبلت و موبایل
+- **PWA** – امکان نصب روی دستگاه و تجربه نزدیک به اپلیکیشن
+- **فونت فارسی اختصاصی (Lalezar)** و پشتیبانی کامل از RTL
 
-### تکنولوژی‌های استفاده شده
-- React 19
-- Vite 6
-- Tailwind CSS 4
-- React Router DOM 7
-- Swiper
-- React Icons
+### تکنولوژی‌ها
+- **React 19**
+- **Vite 6**
+- **Tailwind CSS 4**
+- **React Router DOM 7**
+- **Swiper**
+- **Axios**
+- **React Icons**
+- **vite-plugin-pwa**
 
-### شروع کار
+### شروع به کار
 
 #### پیش‌نیازها
-- Node.js (نسخه LTS پیشنهاد می‌شود)
-- npm یا yarn
+- Node.js (ترجیحاً نسخه LTS)
+- npm
 
-#### نصب
-1. کلون کردن مخزن
+#### نصب و اجرا
 ```bash
+# ۱. کلون کردن مخزن
 git clone https://github.com/darkcode-it/Movie.git
-```
 
-2. ورود به پوشه پروژه
-```bash
+# ۲. ورود به پوشه پروژه
 cd Movie
-```
 
-3. نصب وابستگی‌ها
-```bash
+# ۳. نصب وابستگی‌ها
 npm install
-```
 
-4. اجرای سرور توسعه
-```bash
+# ۴. اجرای حالت توسعه
 npm run dev
 ```
 
-### اسکریپت‌های موجود
-- `npm run dev` - اجرای سرور توسعه
-- `npm run build` - ساخت نسخه تولید
-- `npm run preview` - پیش‌نمایش نسخه تولید
-- `npm run lint` - اجرای ESLint
-- `npm run deploy` - استقرار در GitHub Pages
+#### ساخت نسخه نهایی
+```bash
+# ساخت نسخه تولید
+npm run build
+
+# پیش‌نمایش نسخه تولید
+npm run preview
+```
+
+### اسکریپت‌ها
+- **`npm run dev`** – اجرای سرور توسعه
+- **`npm run build`** – ساخت نسخه تولید
+- **`npm run preview`** – پیش‌نمایش نسخه تولید
+- **`npm run lint`** – اجرای ESLint
+- **`npm run deploy`** – استقرار روی GitHub Pages
 
 ### نسخه زنده
-مشاهده نسخه زنده: [Movie App](https://darkcode-it.github.io/Movie/)
+- **GitHub Pages**: [Movie App](https://darkcode-it.github.io/Movie/)
+- **Vercel**: *(آدرس دیپلوی روی Vercel را اینجا قرار دهید)*
