@@ -62,7 +62,7 @@ const ProtectedAdminRoute = ({ children }) => {
   
   if (!isAdminLoggedIn) {
     console.log('Admin not logged in, redirecting to login');
-    return <Navigate to="/Movie/admin/login" />;
+    return <Navigate to="/admin/login" />;
   }
   
   console.log('Admin is logged in, showing admin panel');
@@ -95,28 +95,27 @@ export default function App() {
         <InstallPrompt />
         <Router>
           <Routes>
-            <Route path="/Movie/" element={<Layout><Home /></Layout>} />
-            <Route path="/Movie/login" element={<Layout><Login /></Layout>} />
-            <Route path="/Movie/register" element={<Layout><Register /></Layout>} />
-            <Route path="/Movie/details/:id" element={<Layout><MovieDetails /></Layout>} />
-            <Route path="/Movie/dashboard" element={<Layout><Dashboard /></Layout>} />
-            <Route path="/Movie/admin/login" element={<Layout><AdminLogin /></Layout>} />
-            <Route path="/Movie/movies" element={<Layout><Movies /></Layout>} />
-            <Route path="/Movie/tv-shows" element={<Layout><TVShows /></Layout>} />
-            <Route path="/Movie/children" element={<Layout><ChildrenMovies /></Layout>} />
-            <Route path="/Movie/more" element={<Layout><MoreMovies /></Layout>} />
-            <Route path="/Movie/subscription" element={<Layout><Subscription /></Layout>} />
-            <Route path="/Movie/create-kid-profile" element={<Layout><CreateKidProfilePage /></Layout>} />
-            <Route path="/Movie/kids-watch" element={<Layout><KidsWatchPage /></Layout>} />
+            <Route path="/" element={<Layout><Home /></Layout>} />
+            <Route path="/login" element={<Layout><Login /></Layout>} />
+            <Route path="/register" element={<Layout><Register /></Layout>} />
+            <Route path="/details/:id" element={<Layout><MovieDetails /></Layout>} />
+            <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+            <Route path="/admin/login" element={<Layout><AdminLogin /></Layout>} />
+            <Route path="/movies" element={<Layout><Movies /></Layout>} />
+            <Route path="/tv-shows" element={<Layout><TVShows /></Layout>} />
+            <Route path="/children" element={<Layout><ChildrenMovies /></Layout>} />
+            <Route path="/more" element={<Layout><MoreMovies /></Layout>} />
+            <Route path="/subscription" element={<Layout><Subscription /></Layout>} />
+            <Route path="/create-kid-profile" element={<Layout><CreateKidProfilePage /></Layout>} />
+            <Route path="/kids-watch" element={<Layout><KidsWatchPage /></Layout>} />
             <Route 
-              path="/Movie/admin/*" 
+              path="/admin/*" 
               element={
                 <ProtectedAdminRoute>
                   <Layout><AdminPanel /></Layout>
                 </ProtectedAdminRoute>
               } 
             />
-            <Route path="/" element={<Navigate to="/Movie/" />} />
             <Route path="*" element={<Layout><div>404 Not Found</div></Layout>} />
           </Routes>
         </Router>
