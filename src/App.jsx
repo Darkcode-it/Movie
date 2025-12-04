@@ -56,6 +56,10 @@ import InstallPrompt from "./components/InstallPrompt";
 import bg from "/public/bg.jpg"; 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
+// Detect if the app is running on GitHub Pages to set a proper basename
+const isGitHubPages = window.location.hostname === 'darkcode-it.github.io';
+const routerBasename = isGitHubPages ? '/Movie' : '/';
+
 // کامپوننت محافظت شده برای پنل ادمین
 const ProtectedAdminRoute = ({ children }) => {
   const isAdminLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
@@ -93,7 +97,7 @@ export default function App() {
       ></div>
       <div style={{ position: 'relative' }}>
         <InstallPrompt />
-        <Router>
+        <Router basename={routerBasename}>
           <Routes>
             <Route path="/" element={<Layout><Home /></Layout>} />
             <Route path="/login" element={<Layout><Login /></Layout>} />

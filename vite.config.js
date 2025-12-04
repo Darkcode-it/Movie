@@ -5,8 +5,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // For Vercel deployment we serve from the root path
-  base: "/",
+  // Use relative base so the app works both on GitHub Pages (/Movie/) and Vercel root (/)
+  base: "./",
   plugins: [
     react(),
     tailwindcss(),

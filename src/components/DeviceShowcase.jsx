@@ -8,27 +8,27 @@ import ErrorFallback from "./ErrorFallback";
 const staticDevices = [
   {
     id: 1,
-    img: "/img/lop.jpg",
+    img: "img/lop.jpg",
     title: "کامپیوتر و لپ‌تاپ"
   },
   {
     id: 2,
-    img: "/img/mobile.jpg",
+    img: "img/mobile.jpg",
     title: "موبایل و تبلت"
   },
   {
     id: 3,
-    img: "/img/famile.jpg",
+    img: "img/famile.jpg",
     title: "سیستم‌های خانگی"
   },
   {
     id: 4,
-    img: "/img/hoshmand.jpg",
+    img: "img/hoshmand.jpg",
     title: "تلویزیون هوشمند"
   },
   {
     id: 5,
-    img: "/img/Game.jpg",
+    img: "img/Game.jpg",
     title: "کنسول‌های بازی"
   }
 ];
