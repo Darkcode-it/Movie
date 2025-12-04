@@ -77,7 +77,8 @@ npm run preview
 - **`npm run deploy`** – deploy to GitHub Pages
 
 ### Live Demo
-- **GitHub Pages**: [Movie App](https://movie-nu-seven.vercel.app)
+- **GitHub Pages**: [Movie App](https://darkcode-it.github.io/Movie/)
+- **vercel Pages**: [Movie App](https://movie-nu-seven.vercel.app/)
 - **Vercel**: *(add your Vercel URL here)*
 
 ---
@@ -145,5 +146,6 @@ npm run preview
 - **`npm run deploy`** – استقرار روی GitHub Pages
 
 ### نسخه زنده
-- **GitHub Pages**: [Movie App](https://movie-nu-seven.vercel.app)
+- **GitHub Pages**: [Movie App](https://darkcode-it.github.io/Movie/)
+- **vercel Pages**: [Movie App](https://movie-nu-seven.vercel.app/)
 - **Vercel**: *(آدرس دیپلوی روی Vercel را اینجا قرار دهید)*
